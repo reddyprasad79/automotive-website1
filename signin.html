@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Stackly Automotive Control Portal | Salem</title>
+  <meta name="description" content="Sign in to your Stackly Automotive control portal — Telematics, Salem track passes, and custom specs in one place.">
+  
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at 10% 20%, #17092b 0%, #040a14 50%, #02060d 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      color: #fff;
+    }
+    .auth-container {
+      width: min(1080px, calc(100% - 40px));
+      margin: 40px auto;
+      background: rgba(12, 17, 31, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.7);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    .auth-left {
+      padding: 50px 45px;
+      background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.15), transparent 70%);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .auth-right {
+      padding: 50px 45px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .role-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .role-btn {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+    }
+    .role-btn:hover, .role-btn.active {
+      background: rgba(168, 85, 247, 0.15);
+      border-color: #a855f7;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    }
+    .auth-input-group {
+      margin-bottom: 18px;
+    }
+    .auth-input-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+    .auth-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      color: #fff;
+      font-size: 0.92rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .auth-input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+    }
+    .btn-signin-submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, #a855f7 0%, #3b82f6 50%, #06b6d4 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.35);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-signin-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(168, 85, 247, 0.5);
+    }
+    .btn-gohome {
+      width: 100%;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 12px;
+      text-align: center;
+      display: block;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .btn-gohome:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+    .social-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+    @media (max-width: 900px) {
+      .auth-container { grid-template-columns: 1fr; }
+      .auth-left { display: none; }
+      .auth-right { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-container">
+    <!-- LEFT PANEL: BRAND & HEADLINE -->
+    <div class="auth-left">
+      <div>
+        <a href="index.html" style="display:inline-block;margin-bottom:30px;">
+          <img src="assets/logo.png" alt="Stackly Logo" style="height:48px; object-fit:contain;">
+        </a>
+
+        <h1 style="font-family:'Manrope',sans-serif;font-size:2.4rem;font-weight:800;line-height:1.18;margin-bottom:18px;color:#fff;">
+          Automotive engineering that <span style="background:linear-gradient(135deg,#c084fc,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">runs smoothly</span> while you drive.
+        </h1>
+
+        <p style="color:#94a3b8;font-size:0.95rem;line-height:1.7;margin-bottom:30px;">
+          Sign in to your Stackly Automotive control portal — Telematics, Salem track passes, and custom vehicle specs in one place.
+        </p>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 16px;border-radius:14px;font-size:0.8rem;">
+            <span style="color:#f59e0b;font-weight:700;">⚡ Instant Telematics</span>
+            <span style="display:block;color:#64748b;font-size:0.72rem;margin-top:2px;">Connect in 15 secs</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 16px;border-radius:14px;font-size:0.8rem;">
+            <span style="color:#38bdf8;font-weight:700;">🛡️ Salem HQ Reg.</span>
+            <span style="display:block;color:#64748b;font-size:0.72rem;margin-top:2px;">Audited quarterly</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:10px 16px;border-radius:14px;font-size:0.8rem;">
+            <span style="color:#34d399;font-weight:700;">🔐 256-Bit Vault</span>
+            <span style="display:block;color:#64748b;font-size:0.72rem;margin-top:2px;">Data stays private</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;">
+        <div>
+          <b style="font-family:'Manrope',sans-serif;font-size:1.4rem;color:#fff;display:block;">1,280+</b>
+          <span style="font-size:0.75rem;color:#64748b;text-transform:uppercase;">Supercars</span>
+        </div>
+        <div>
+          <b style="font-family:'Manrope',sans-serif;font-size:1.4rem;color:#fff;display:block;">98.4%</b>
+          <span style="font-size:0.75rem;color:#64748b;text-transform:uppercase;">Satisfaction</span>
+        </div>
+        <div>
+          <b style="font-family:'Manrope',sans-serif;font-size:1.4rem;color:#fff;display:block;">100.0%</b>
+          <span style="font-size:0.75rem;color:#64748b;text-transform:uppercase;">Telemetry</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: INTERACTIVE AUTH FORM -->
+    <div class="auth-right">
+      <p style="text-align:center;font-size:0.88rem;color:#94a3b8;margin-bottom:20px;">Choose how you're signing in today.</p>
+
+      <div class="role-selector">
+        <button id="btnRoleAdmin" class="role-btn active" onclick="selectRole('admin')">
+          <span style="font-size:1.4rem;">👑</span>
+          <span>Admin</span>
+        </button>
+        <button id="btnRoleClient" class="role-btn" onclick="selectRole('client')">
+          <span style="font-size:1.4rem;">💼</span>
+          <span>Client</span>
+        </button>
+      </div>
+
+      <form id="signInForm" onsubmit="event.preventDefault(); handleAuthSubmit();">
+        <div class="auth-input-group">
+          <label id="lblAuthEmail">Email</label>
+          <input type="email" id="inputAuthEmail" class="auth-input" value="sundaram@stacklyauto.in" required>
+        </div>
+
+        <div class="auth-input-group">
+          <label>Password</label>
+          <input type="password" class="auth-input" value="••••••••••••" required>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:0.82rem;">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#cbd5e1;">
+            <input type="checkbox" checked style="accent-color:#a855f7;"> Remember me
+          </label>
+          <a href="404.html" style="color:#38bdf8;font-weight:600;text-decoration:none;">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-signin-submit">Sign in</button>
+        <a href="index.html" class="btn-gohome">Go home</a>
+      </form>
+
+      <div style="margin-top:24px;text-align:center;">
+        <span style="font-size:0.75rem;color:#64748b;text-transform:uppercase;letter-spacing:1px;">or continue with</span>
+        <div class="social-bar">
+          <a href="404.html" class="social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="404.html" class="social-btn" title="GitHub"><i class="bi bi-github"></i></a>
+          <a href="404.html" class="social-btn" title="Google"><i class="bi bi-google"></i></a>
+          <a href="404.html" class="social-btn" title="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+        </div>
+
+        <div style="margin-top:24px;font-size:0.85rem;color:#94a3b8;">
+          New here? <a href="get-started.html" style="color:#38bdf8;font-weight:700;text-decoration:none;">Create an account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    let activeRole = 'admin';
+
+    function selectRole(role) {
+      activeRole = role;
+      const bA = document.getElementById('btnRoleAdmin');
+      const bC = document.getElementById('btnRoleClient');
+      const inp = document.getElementById('inputAuthEmail');
+
+      if (role === 'admin') {
+        bA.classList.add('active');
+        bC.classList.remove('active');
+        inp.value = 'sundaram@stacklyauto.in';
+      } else {
+        bC.classList.add('active');
+        bA.classList.remove('active');
+        inp.value = 'arjun@stacklyauto.in';
+      }
+    }
+
+    function handleAuthSubmit() {
+      if (activeRole === 'admin') {
+        showToast('Authentication Successful! Redirecting to Admin Dashboard...', 'bi-shield-check');
+        setTimeout(() => window.location.href = 'admin-dashboard.html', 1000);
+      } else {
+        showToast('Authentication Successful! Redirecting to Sign In Telematics Dashboard...', 'bi-shield-check');
+        setTimeout(() => window.location.href = 'signin-dashboard.html', 1000);
+      }
+    }
+
+  </script>
+
+</body>
+</html>

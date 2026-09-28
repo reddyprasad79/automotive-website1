@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started - Register with Stackly Travel &amp; Tours</title>
+  <meta name="description" content="Create your Stackly Travel account today and unlock exclusive holiday discounts, custom itinerary tools, and 24/7 Salem Concierge support.">
+  
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <style>
+    /* Role Selector Tabs */
+    .role-selector {
+      display: flex;
+      background: var(--bg-light);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+      margin-bottom: 28px;
+      border: 1px solid var(--border-light);
+    }
+    .role-tab {
+      flex: 1;
+      padding: 12px 20px;
+      border: none;
+      background: transparent;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--muted);
+      cursor: pointer;
+      border-radius: var(--radius-pill);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .role-tab.active {
+      background: var(--accent);
+      color: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(255, 81, 47, 0.35);
+    }
+    .role-tab:not(.active):hover {
+      background: rgba(255, 81, 47, 0.08);
+      color: var(--accent);
+    }
+    .role-tab i { font-size: 1.1rem; }
+
+    .role-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 81, 47, 0.08);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .role-indicator .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: dotPulse 2s infinite;
+    }
+    .role-indicator.admin-indicator {
+      background: rgba(0, 114, 255, 0.08);
+      color: var(--primary);
+    }
+    .role-indicator.admin-indicator .dot {
+      background: var(--primary);
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    /* Admin-specific fields */
+    .admin-fields { display: none; }
+    .admin-fields.visible { display: block; }
+    .traveler-fields { display: block; }
+    .traveler-fields.hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    
+    <!-- Left Hero Sidebar -->
+    <div class="auth-sidebar" id="authSidebar" style="background: linear-gradient(135deg, #0F172A 0%, #FF512F 100%);">
+      <div>
+        <a href="index.html" class="brand-logo">
+          <span class="brand-name">Stackly</span>
+        </a>
+      </div>
+
+      <div>
+        <span class="badge" style="background: rgba(255, 255, 255, 0.15); color: #FFF; padding: 6px 16px; border-radius: 20px; font-weight: 700; margin-bottom: 20px; display: inline-block;">
+          <i class="bi bi-gift-fill text-warning"></i> Exclusive ₹2,000 Welcome Voucher
+        </span>
+        <h2 style="font-size: 2.75rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; color: #FFF;">
+          Start Planning Your Next Travel Adventure
+        </h2>
+        <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.1rem; max-width: 440px;">
+          Join over 15,000 happy travelers and get instant access to discounted Yercaud, Munnar, and Goa tour packages.
+        </p>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(10px); padding: 20px; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.2);">
+        <strong style="display: block; color: #FFF; font-size: 1.05rem; margin-bottom: 6px;">
+          <i class="bi bi-shield-check text-success me-2"></i> Stackly Salem Promise
+        </strong>
+        <p style="font-size: 0.88rem; color: rgba(255, 255, 255, 0.8); margin: 0;">
+          Zero hidden fees, 100% verified resorts, and 24/7 dedicated local assistance in Salem, Tamil Nadu.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right Form Container -->
+    <div class="auth-form-container">
+      <div class="auth-form-box reveal">
+        
+        <div style="margin-bottom: 24px;">
+          <h1 class="auth-title">Create Account</h1>
+          <p class="auth-subtitle">Select your role and fill in your details below</p>
+        </div>
+
+        <!-- Role Selector -->
+        <div class="role-selector" id="roleSelector">
+          <button type="button" class="role-tab active" data-role="traveler" onclick="switchSignupRole('traveler')">
+            <i class="bi bi-person-circle"></i> Traveler
+          </button>
+          <button type="button" class="role-tab" data-role="admin" onclick="switchSignupRole('admin')">
+            <i class="bi bi-shield-lock"></i> Admin
+          </button>
+        </div>
+
+        <!-- Role Indicator -->
+        <div class="role-indicator" id="roleIndicator">
+          <span class="dot"></span> Registering as Traveler
+        </div>
+
+        <form id="getStartedForm">
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label><i class="bi bi-person text-primary"></i> First Name *</label>
+              <input type="text" class="form-control" placeholder="e.g. Ramesh" required>
+            </div>
+            <div class="form-group">
+              <label><i class="bi bi-person text-primary"></i> Last Name *</label>
+              <input type="text" class="form-control" placeholder="e.g. Kumar" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="bi bi-envelope text-primary"></i> Email Address *</label>
+            <input type="email" class="form-control" placeholder="ramesh@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label><i class="bi bi-telephone text-primary"></i> Mobile Number (WhatsApp) *</label>
+            <input type="tel" class="form-control" placeholder="+91 98427 12345" required>
+          </div>
+
+          <!-- Traveler-specific fields -->
+          <div class="traveler-fields" id="travelerFields">
+            <div class="form-group">
+              <label><i class="bi bi-compass text-primary"></i> Primary Travel Interest</label>
+              <select class="form-control">
+                <option value="hill">Hill Stations (Yercaud, Munnar, Ooty)</option>
+                <option value="beach">Beach Vacations (Goa, Kovalam)</option>
+                <option value="cultural">Heritage &amp; Temple Circuits</option>
+                <option value="backwater">Kerala Backwater Houseboats</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Admin-specific fields -->
+          <div class="admin-fields" id="adminFields">
+            <div class="form-group">
+              <label><i class="bi bi-building text-primary"></i> Department *</label>
+              <select class="form-control">
+                <option value="operations">Operations & Tour Management</option>
+                <option value="sales">Sales & Marketing</option>
+                <option value="support">Customer Support</option>
+                <option value="finance">Finance & Revenue</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><i class="bi bi-key text-primary"></i> Admin Access Code *</label>
+              <input type="text" class="form-control" placeholder="Enter your admin invitation code" id="adminCode">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label><i class="bi bi-lock text-primary"></i> Create Password *</label>
+            <input type="password" class="form-control" placeholder="At least 8 characters..." required>
+          </div>
+
+          <div style="margin-bottom: 24px;">
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--dark-body); cursor: pointer;">
+              <input type="checkbox" required checked style="accent-color: var(--primary); margin-top: 4px;">
+              <span>I agree to the <a href="404.html" style="color: var(--primary); font-weight: 600;">Terms &amp; Conditions</a> and Privacy Policy of Stackly Travel &amp; Tours, Salem.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-accent style-full" style="width: 100%; padding: 16px;" id="submitBtn">
+            Create Account &amp; Claim Voucher <i class="bi bi-arrow-right"></i>
+          </button>
+        </form>
+
+        <p style="text-align: center; margin-top: 30px; font-size: 0.95rem; color: var(--muted);">
+          Already have an account? <a href="signin.html" style="color: var(--primary); font-weight: 700;">Sign In <i class="bi bi-box-arrow-in-right"></i></a>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    let currentSignupRole = 'traveler';
+
+    function switchSignupRole(role) {
+      currentSignupRole = role;
+      const tabs = document.querySelectorAll('.role-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      document.querySelector(`.role-tab[data-role="${role}"]`).classList.add('active');
+
+      const indicator = document.getElementById('roleIndicator');
+      const travelerFields = document.getElementById('travelerFields');
+      const adminFields = document.getElementById('adminFields');
+      const sidebar = document.getElementById('authSidebar');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (role === 'admin') {
+        indicator.className = 'role-indicator admin-indicator';
+        indicator.innerHTML = '<span class="dot"></span> Registering as Admin';
+        travelerFields.classList.add('hidden');
+        adminFields.classList.add('visible');
+        sidebar.style.background = 'linear-gradient(135deg, #0F172A 0%, #0072FF 100%)';
+        submitBtn.innerHTML = 'Create Admin Account <i class="bi bi-shield-check"></i>';
+      } else {
+        indicator.className = 'role-indicator';
+        indicator.innerHTML = '<span class="dot"></span> Registering as Traveler';
+        travelerFields.classList.remove('hidden');
+        adminFields.classList.remove('visible');
+        sidebar.style.background = 'linear-gradient(135deg, #0F172A 0%, #FF512F 100%)';
+        submitBtn.innerHTML = 'Create Account &amp; Claim Voucher <i class="bi bi-arrow-right"></i>';
+      }
+    }
+
+    document.getElementById('getStartedForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const dest = currentSignupRole === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html';
+      const msg = currentSignupRole === 'admin'
+        ? 'Admin account created! Redirecting to management dashboard...'
+        : '🎉 Account Created! Welcome to Stackly Salem Travel Club.';
+      showToast(msg, 'success');
+      setTimeout(() => window.location.href = dest, 1500);
+    });
+  </script>
+</body>
+</html>

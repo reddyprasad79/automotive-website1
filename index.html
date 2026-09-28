@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly Automotive - Luxury & Supercar Showroom | Salem, Tamil Nadu</title>
+  <meta name="description" content="Discover futuristic luxury supercars, high-performance EVs, and bespoke automotive engineering at Stackly Automotive, headquartered in Salem, Tamil Nadu, India.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.png">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       SITE HEADER / NAVBAR
+       ========================================== -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo.png" alt="Stackly Logo">
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="fleet-showcase.html" class="nav-link">Fleet Showcase</a>
+        <a href="blog.html" class="nav-link">Automotive Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="signin.html" class="btn btn-glass">Sign In</a>
+        <a href="get-started.html" class="btn btn-primary">
+          <i class="bi bi-speedometer2"></i> Get Started
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle Navigation">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-nav-overlay"></div>
+  <div class="mobile-nav-menu">
+    <div>
+      <div class="mobile-nav-header">
+        <a href="index.html" class="brand-logo">
+          <img src="assets/logo.png" alt="Stackly Logo">
+        </a>
+        <button class="mobile-nav-close" style="background:none; border:none; color:#fff; font-size:1.5rem;"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="fleet-showcase.html" class="nav-link">Fleet Showcase</a>
+        <a href="blog.html" class="nav-link">Automotive Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="signin.html" class="nav-link">Sign In</a>
+      </div>
+    </div>
+    <div style="margin-top: 30px;">
+      <a href="get-started.html" class="btn btn-primary" style="width: 100%;">Book Test Drive</a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SECTION 1: HERO SECTION
+       ========================================== -->
+  <section class="hero-section">
+    <div class="hero-bg-shapes">
+      <div class="shape-blob blob-1"></div>
+      <div class="shape-blob blob-2"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <!-- Left Hero Text & Search Filter -->
+        <div class="hero-text reveal-left">
+          <div class="section-subtitle">
+            <i class="bi bi-geo-alt-fill text-primary"></i> Headquartered in Salem, Tamil Nadu, India
+          </div>
+          <h1 class="hero-title">
+            Drive the Future of <span>Supercars &amp; Luxury EVs</span>
+          </h1>
+          <p class="hero-desc">
+            Experience peak hypercar engineering, ultra-luxury electric vehicles, and bespoke performance tuning with Stackly Automotive’s Salem flagship showroom concierges.
+          </p>
+
+          <!-- Glassmorphism Automotive Search Widget -->
+          <div class="search-widget">
+            <div class="search-tabs">
+              <button class="search-tab-btn active"><i class="bi bi-lightning-charge-fill"></i> Hyper EV</button>
+              <button class="search-tab-btn"><i class="bi bi-shield-shaded"></i> Luxury Sedan</button>
+              <button class="search-tab-btn"><i class="bi bi-speedometer"></i> Track Edition</button>
+            </div>
+
+            <form id="heroSearchForm" class="search-grid">
+              <div class="search-field">
+                <label><i class="bi bi-car-front-fill text-primary"></i> Select Model</label>
+                <select id="searchModel">
+                  <option value="Stackly Aero GT">Stackly Aero GT (Electric)</option>
+                  <option value="Stackly Spectre V12">Stackly Spectre V12 Hypercar</option>
+                  <option value="Stackly Apex EV">Stackly Apex EV SUV</option>
+                  <option value="Stackly Phantom Coupe">Stackly Phantom Coupe</option>
+                </select>
+              </div>
+              <div class="search-field">
+                <label><i class="bi bi-calendar-check text-primary"></i> Test Drive Date</label>
+                <input type="date" id="searchDate" required>
+              </div>
+              <div class="search-field">
+                <label><i class="bi bi-geo-alt text-primary"></i> Showroom</label>
+                <select id="searchLocation">
+                  <option value="Salem HQ">Salem Flagship HQ, TN</option>
+                  <option value="Chennai Hub">Chennai Experience Hub</option>
+                  <option value="Coimbatore Hub">Coimbatore Track Hub</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i> Reserve
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual Card with Floating Badges -->
+        <div class="hero-visual reveal-right delay-2">
+          <div class="hero-image-card hover-tilt">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" alt="Stackly Supercar Salem Showroom">
+            
+            <div class="floating-badge-card pos-1 animate-float">
+              <i class="bi bi-lightning-fill text-warning fs-3"></i>
+              <div>
+                <strong style="display:block; font-size: 0.95rem; color: #FFF;">0 - 60 mph in 2.1s</strong>
+                <span style="font-size: 0.78rem; color: #94A3B8;">Quad Motor Vectoring</span>
+              </div>
+            </div>
+
+            <div class="floating-badge-card pos-2 animate-float">
+              <i class="bi bi-shield-check text-success fs-3"></i>
+              <div>
+                <strong style="display:block; font-size: 0.95rem; color: #FFF;">Salem Flagship HQ</strong>
+                <span style="font-size: 0.78rem; color: #94A3B8;">Tamil Nadu, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 2: FEATURED FLEET (3D FLIP CARDS GRID)
+       ========================================== -->
+  <section id="popular-packages" class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-subtitle">
+          <i class="bi bi-fire text-primary"></i> Flagship Inventory
+        </div>
+        <h2 class="section-title">
+          Explore Our <span>3D Performance Fleet</span>
+        </h2>
+        <p class="section-desc">
+          Hover over or tap any vehicle card to activate the interactive 3D flip card effect and inspect raw performance specifications!
+        </p>
+
+        <!-- Category Filter Buttons -->
+        <div class="search-tabs justify-content-center mb-5" style="justify-content: center; display: inline-flex;">
+          <button class="search-tab-btn package-filter-btn active" data-filter="all">All Vehicles</button>
+          <button class="search-tab-btn package-filter-btn" data-filter="supercar">Supercars</button>
+          <button class="search-tab-btn package-filter-btn" data-filter="ev">Electric EVs</button>
+          <button class="search-tab-btn package-filter-btn" data-filter="luxury">Luxury Sedans</button>
+          <button class="search-tab-btn package-filter-btn" data-filter="suv">Performance SUVs</button>
+        </div>
+      </div>
+
+      <!-- 3D Flip Cards Grid -->
+      <div class="row g-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px;">
+        
+        <!-- Flip Card 1: Stackly Spectre V12 -->
+        <div class="package-card-item reveal-up delay-1" data-category="supercar">
+          <div class="flip-card-wrapper">
+            <div class="flip-card">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front">
+                <div class="flip-card-img">
+                  <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Stackly Spectre V12">
+                  <span class="flip-badge"><i class="bi bi-geo-alt-fill"></i> Salem HQ</span>
+                  <span class="flip-price-tag">$240,000</span>
+                </div>
+                <div class="flip-card-body">
+                  <div>
+                    <h3 class="flip-card-title">Stackly Spectre V12 Coupe</h3>
+                    <div class="flip-card-meta">
+                      <span><i class="bi bi-speedometer2"></i> 780 HP twin-turbo</span>
+                      <span><i class="bi bi-star-fill text-warning"></i> 5.0 (180 reviews)</span>
+                    </div>
+                  </div>
+                  <div class="flip-hint">
+                    <span><i class="bi bi-arrow-repeat"></i> Hover or Tap to Flip 3D Specs</span>
+                    <button class="btn btn-outline btn-sm trigger-flip">Specs <i class="bi bi-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- BACK FACE -->
+              <div class="flip-card-back">
+                <div>
+                  <div class="flip-back-header">
+                    <h4>Stackly Spectre V12 Technical Spec</h4>
+                    <p>Hand-assembled in Salem Flagship Assembly</p>
+                  </div>
+                  <div class="flip-specs-grid">
+                    <div class="spec-item">
+                      <label>0-60 MPH</label>
+                      <strong>2.6 Seconds</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Top Speed</label>
+                      <strong>215 MPH</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Engine</label>
+                      <strong>6.5L V12 Quad-Cam</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Transmission</label>
+                      <strong>8-Speed Dual Clutch</strong>
+                    </div>
+                  </div>
+                  <div class="flip-highlights">
+                    <h5>Key Features</h5>
+                    <ul>
+                      <li><i class="bi bi-check-circle-fill"></i> Carbon Fiber Monocoque chassis</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Titanium active exhaust system</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Salem Track Concierge Warranty</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flip-back-actions">
+                  <a href="get-started.html" class="btn btn-primary btn-sm" style="flex:1;">Book Test Drive</a>
+                  <button class="btn btn-glass btn-sm trigger-flip">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 2: Stackly Aero EV -->
+        <div class="package-card-item reveal-up delay-2" data-category="ev">
+          <div class="flip-card-wrapper">
+            <div class="flip-card">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front">
+                <div class="flip-card-img">
+                  <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Stackly Aero EV">
+                  <span class="flip-badge"><i class="bi bi-lightning-charge-fill"></i> 100% Electric</span>
+                  <span class="flip-price-tag">$189,500</span>
+                </div>
+                <div class="flip-card-body">
+                  <div>
+                    <h3 class="flip-card-title">Stackly Aero Hyper EV</h3>
+                    <div class="flip-card-meta">
+                      <span><i class="bi bi-battery-charging"></i> 520 Miles Range</span>
+                      <span><i class="bi bi-star-fill text-warning"></i> 4.9 (310 reviews)</span>
+                    </div>
+                  </div>
+                  <div class="flip-hint">
+                    <span><i class="bi bi-arrow-repeat"></i> Hover or Tap to Flip 3D Specs</span>
+                    <button class="btn btn-outline btn-sm trigger-flip">Specs <i class="bi bi-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- BACK FACE -->
+              <div class="flip-card-back">
+                <div>
+                  <div class="flip-back-header">
+                    <h4>Stackly Aero EV Technical Spec</h4>
+                    <p>800V Ultra-Fast Charging Architecture</p>
+                  </div>
+                  <div class="flip-specs-grid">
+                    <div class="spec-item">
+                      <label>0-60 MPH</label>
+                      <strong>2.1 Seconds</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Battery</label>
+                      <strong>120 kWh Solid-State</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Horsepower</label>
+                      <strong>1,020 HP Quad Motor</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Fast Charge</label>
+                      <strong>10-80% in 12 Mins</strong>
+                    </div>
+                  </div>
+                  <div class="flip-highlights">
+                    <h5>Key Features</h5>
+                    <ul>
+                      <li><i class="bi bi-check-circle-fill"></i> Autonomous Level 4 AI Autopilot</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Interactive Augmented Reality HUD</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Free Salem Fast Charging lifetime access</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flip-back-actions">
+                  <a href="get-started.html" class="btn btn-primary btn-sm" style="flex:1;">Book Test Drive</a>
+                  <button class="btn btn-glass btn-sm trigger-flip">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 3: Stackly Phantom Luxury Sedan -->
+        <div class="package-card-item reveal-up delay-3" data-category="luxury">
+          <div class="flip-card-wrapper">
+            <div class="flip-card">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front">
+                <div class="flip-card-img">
+                  <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Stackly Phantom Sedan">
+                  <span class="flip-badge"><i class="bi bi-award-fill"></i> Ultra Executive</span>
+                  <span class="flip-price-tag">$165,000</span>
+                </div>
+                <div class="flip-card-body">
+                  <div>
+                    <h3 class="flip-card-title">Stackly Phantom Executive</h3>
+                    <div class="flip-card-meta">
+                      <span><i class="bi bi-shield-shaded"></i> Air Suspension</span>
+                      <span><i class="bi bi-star-fill text-warning"></i> 4.95 (95 reviews)</span>
+                    </div>
+                  </div>
+                  <div class="flip-hint">
+                    <span><i class="bi bi-arrow-repeat"></i> Hover or Tap to Flip 3D Specs</span>
+                    <button class="btn btn-outline btn-sm trigger-flip">Specs <i class="bi bi-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- BACK FACE -->
+              <div class="flip-card-back">
+                <div>
+                  <div class="flip-back-header">
+                    <h4>Stackly Phantom Luxury Specs</h4>
+                    <p>Bespoke Salem Leather &amp; Walnut Trim</p>
+                  </div>
+                  <div class="flip-specs-grid">
+                    <div class="spec-item">
+                      <label>0-60 MPH</label>
+                      <strong>3.4 Seconds</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Sound System</label>
+                      <strong>28-Speaker Burmester</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Engine</label>
+                      <strong>4.0L V8 Bi-Turbo Hybrid</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Seats</label>
+                      <strong>4 Massaging Executive Recliners</strong>
+                    </div>
+                  </div>
+                  <div class="flip-highlights">
+                    <h5>Key Features</h5>
+                    <ul>
+                      <li><i class="bi bi-check-circle-fill"></i> Active Noise Cancelling cabin</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Starlight OLED Ceiling Canopy</li>
+                      <li><i class="bi bi-check-circle-fill"></i> 24/7 Salem Concierge Chauffeur Option</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flip-back-actions">
+                  <a href="get-started.html" class="btn btn-primary btn-sm" style="flex:1;">Book Test Drive</a>
+                  <button class="btn btn-glass btn-sm trigger-flip">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 4: Stackly Apex Performance SUV -->
+        <div class="package-card-item reveal-up delay-4" data-category="suv">
+          <div class="flip-card-wrapper">
+            <div class="flip-card">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front">
+                <div class="flip-card-img">
+                  <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt="Stackly Apex SUV">
+                  <span class="flip-badge"><i class="bi bi-compass"></i> All-Terrain 4WD</span>
+                  <span class="flip-price-tag">$142,000</span>
+                </div>
+                <div class="flip-card-body">
+                  <div>
+                    <h3 class="flip-card-title">Stackly Apex Track SUV</h3>
+                    <div class="flip-card-meta">
+                      <span><i class="bi bi-speedometer"></i> 680 HP Supercharged</span>
+                      <span><i class="bi bi-star-fill text-warning"></i> 4.85 (210 reviews)</span>
+                    </div>
+                  </div>
+                  <div class="flip-hint">
+                    <span><i class="bi bi-arrow-repeat"></i> Hover or Tap to Flip 3D Specs</span>
+                    <button class="btn btn-outline btn-sm trigger-flip">Specs <i class="bi bi-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- BACK FACE -->
+              <div class="flip-card-back">
+                <div>
+                  <div class="flip-back-header">
+                    <h4>Stackly Apex SUV Performance</h4>
+                    <p>Designed for Tamil Nadu Western Ghats &amp; Highways</p>
+                  </div>
+                  <div class="flip-specs-grid">
+                    <div class="spec-item">
+                      <label>Towing</label>
+                      <strong>7,500 LBS</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Ground Clearance</label>
+                      <strong>11.5 Inches Active</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Horsepower</label>
+                      <strong>680 HP V8</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Drive Modes</label>
+                      <strong>7 Dynamic Terrain Modes</strong>
+                    </div>
+                  </div>
+                  <div class="flip-highlights">
+                    <h5>Key Features</h5>
+                    <ul>
+                      <li><i class="bi bi-check-circle-fill"></i> Adaptive Air Suspension with roll control</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Panoramic Skyview Glass Roof</li>
+                      <li><i class="bi bi-check-circle-fill"></i> High-altitude Salem road calibration</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flip-back-actions">
+                  <a href="get-started.html" class="btn btn-primary btn-sm" style="flex:1;">Book Test Drive</a>
+                  <button class="btn btn-glass btn-sm trigger-flip">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 5: Stackly GT Roadster Convertible -->
+        <div class="package-card-item reveal-up delay-5" data-category="supercar">
+          <div class="flip-card-wrapper">
+            <div class="flip-card">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front">
+                <div class="flip-card-img">
+                  <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Stackly GT Roadster">
+                  <span class="flip-badge"><i class="bi bi-sun"></i> Open Top GT</span>
+                  <span class="flip-price-tag">$210,000</span>
+                </div>
+                <div class="flip-card-body">
+                  <div>
+                    <h3 class="flip-card-title">Stackly GT Roadster</h3>
+                    <div class="flip-card-meta">
+                      <span><i class="bi bi-wind"></i> 10-Sec Hardtop Roof</span>
+                      <span><i class="bi bi-star-fill text-warning"></i> 5.0 (140 reviews)</span>
+                    </div>
+                  </div>
+                  <div class="flip-hint">
+                    <span><i class="bi bi-arrow-repeat"></i> Hover or Tap to Flip 3D Specs</span>
+                    <button class="btn btn-outline btn-sm trigger-flip">Specs <i class="bi bi-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- BACK FACE -->
+              <div class="flip-card-back">
+                <div>
+                  <div class="flip-back-header">
+                    <h4>Stackly GT Roadster Specifications</h4>
+                    <p>Lightweight Aluminum Body Architecture</p>
+                  </div>
+                  <div class="flip-specs-grid">
+                    <div class="spec-item">
+                      <label>0-60 MPH</label>
+                      <strong>2.8 Seconds</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Roof Mechanism</label>
+                      <strong>Electro-Hydraulic</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Brakes</label>
+                      <strong>Carbon Ceramic Discs</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Weight</label>
+                      <strong>1,480 KG Ultra-light</strong>
+                    </div>
+                  </div>
+                  <div class="flip-highlights">
+                    <h5>Key Features</h5>
+                    <ul>
+                      <li><i class="bi bi-check-circle-fill"></i> Active Aero Rear Wing Spoiler</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Heated Air-scarf headrests</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Track telemetric data logger</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flip-back-actions">
+                  <a href="get-started.html" class="btn btn-primary btn-sm" style="flex:1;">Book Test Drive</a>
+                  <button class="btn btn-glass btn-sm trigger-flip">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flip Card 6: Stackly Cyber Truck EV -->
+        <div class="package-card-item reveal-up delay-1" data-category="ev">
+          <div class="flip-card-wrapper">
+            <div class="flip-card">
+              <!-- FRONT FACE -->
+              <div class="flip-card-front">
+                <div class="flip-card-img">
+                  <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Stackly Cyber EV Truck">
+                  <span class="flip-badge"><i class="bi bi-shield-lock-fill"></i> Armored EV</span>
+                  <span class="flip-price-tag">$178,000</span>
+                </div>
+                <div class="flip-card-body">
+                  <div>
+                    <h3 class="flip-card-title">Stackly Cyber EV Pickup</h3>
+                    <div class="flip-card-meta">
+                      <span><i class="bi bi-lightning-charge"></i> 450 Miles Range</span>
+                      <span><i class="bi bi-star-fill text-warning"></i> 4.9 (88 reviews)</span>
+                    </div>
+                  </div>
+                  <div class="flip-hint">
+                    <span><i class="bi bi-arrow-repeat"></i> Hover or Tap to Flip 3D Specs</span>
+                    <button class="btn btn-outline btn-sm trigger-flip">Specs <i class="bi bi-arrow-right"></i></button>
+                  </div>
+                </div>
+              </div>
+              <!-- BACK FACE -->
+              <div class="flip-card-back">
+                <div>
+                  <div class="flip-back-header">
+                    <h4>Stackly Cyber EV Pickup Specs</h4>
+                    <p>Stainless Steel Exo-Skeleton Armor</p>
+                  </div>
+                  <div class="flip-specs-grid">
+                    <div class="spec-item">
+                      <label>0-60 MPH</label>
+                      <strong>2.9 Seconds</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Payload</label>
+                      <strong>3,500 LBS</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Power Output</label>
+                      <strong>120V &amp; 240V Outlets</strong>
+                    </div>
+                    <div class="spec-item">
+                      <label>Armor Glass</label>
+                      <strong>Shatter-Resistant</strong>
+                    </div>
+                  </div>
+                  <div class="flip-highlights">
+                    <h5>Key Features</h5>
+                    <ul>
+                      <li><i class="bi bi-check-circle-fill"></i> CrabWalk 4-Wheel Steering</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Solar Bed Cover Charger</li>
+                      <li><i class="bi bi-check-circle-fill"></i> Built for Salem rugged terrains</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="flip-back-actions">
+                  <a href="get-started.html" class="btn btn-primary btn-sm" style="flex:1;">Book Test Drive</a>
+                  <button class="btn btn-glass btn-sm trigger-flip">Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: AUTOMOTIVE INNOVATION & COUNTER STATS
+       ========================================== -->
+  <section class="section" style="background: rgba(13, 19, 32, 0.5);">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-subtitle">
+          <i class="bi bi-cpu-fill text-primary"></i> Next-Gen Engineering
+        </div>
+        <h2 class="section-title">
+          Pioneering <span>Automotive Innovation</span>
+        </h2>
+        <p class="section-desc">
+          Crafted with surgical precision, our vehicles fuse extreme aerodynamics, artificial intelligence, and sustainable electric powertrains.
+        </p>
+      </div>
+
+      <!-- Innovation Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px;">
+        <div class="spec-item reveal-left delay-1" style="padding: 28px; background: var(--bg-card); border-radius: var(--radius-lg);">
+          <i class="bi bi-wind text-primary" style="font-size: 2.5rem;"></i>
+          <h3 style="font-size: 1.3rem; margin: 16px 0 10px 0;">Active Aerodynamics</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Dynamic flap control reduces drag coefficient to 0.20 Cd at speeds over 120 mph for razor-sharp handling.
+          </p>
+        </div>
+
+        <div class="spec-item reveal-left delay-2" style="padding: 28px; background: var(--bg-card); border-radius: var(--radius-lg);">
+          <i class="bi bi-cpu text-primary" style="font-size: 2.5rem;"></i>
+          <h3 style="font-size: 1.3rem; margin: 16px 0 10px 0;">Autonomous AI Pilot</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            360-degree LiDAR and neural radar sensors continuously analyze roads, traffic, and weather conditions in real-time.
+          </p>
+        </div>
+
+        <div class="spec-item reveal-right delay-3" style="padding: 28px; background: var(--bg-card); border-radius: var(--radius-lg);">
+          <i class="bi bi-lightning-charge text-primary" style="font-size: 2.5rem;"></i>
+          <h3 style="font-size: 1.3rem; margin: 16px 0 10px 0;">Solid-State Batteries</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Next-generation energy density provides 500+ miles range while reducing thermal degradation by 95%.
+          </p>
+        </div>
+
+        <div class="spec-item reveal-right delay-4" style="padding: 28px; background: var(--bg-card); border-radius: var(--radius-lg);">
+          <i class="bi bi-gem text-primary" style="font-size: 2.5rem;"></i>
+          <h3 style="font-size: 1.3rem; margin: 16px 0 10px 0;">Handcrafted Precision</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            Every cabin interior is customized by master craftsmen in Salem using sustainable Italian leather and forged carbon.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stats Counter Bar -->
+      <div class="stats-bar reveal-scale delay-2">
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter-val" data-target="150">0</span>+</div>
+          <div class="stat-label">Luxury Vehicles Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter-val" data-target="99.4">0</span>%</div>
+          <div class="stat-label">Customer Satisfaction Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter-val" data-target="2.1">0</span>s</div>
+          <div class="stat-label">Fastest 0-60 MPH Time</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter-val" data-target="24">0</span>/7</div>
+          <div class="stat-label">Salem Concierge Support</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 4: INTERACTIVE CAR CONFIGURATOR
+       ========================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-subtitle">
+          <i class="bi bi-palette-fill text-primary"></i> Live Customizer
+        </div>
+        <h2 class="section-title">
+          Build Your <span>Custom Stackly Supercar</span>
+        </h2>
+        <p class="section-desc">
+          Click the color swatches below to test different paint coats and preview instant live pricing!
+        </p>
+      </div>
+
+      <div class="configurator-card reveal-up delay-1">
+        <!-- Interactive Image Preview -->
+        <div class="config-preview">
+          <img id="featuredCarImage" class="car-preview-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" alt="Configurable Supercar">
+        </div>
+
+        <!-- Controls -->
+        <div class="config-controls">
+          <div>
+            <div class="config-option-title">
+              <span>Exterior Paint Finish</span>
+              <strong id="selectedColorName" style="color: var(--primary);">Crimson Red Metallic</strong>
+            </div>
+            
+            <div class="color-swatch-group">
+              <div class="color-swatch active" data-color="red" data-title="Crimson Red" style="background: #E11D48;"></div>
+              <div class="color-swatch" data-color="cyan" data-title="Electric Cyan" style="background: #00F0FF;"></div>
+              <div class="color-swatch" data-color="black" data-title="Stealth Black" style="background: #111827;"></div>
+              <div class="color-swatch" data-color="white" data-title="Pearl White" style="background: #F8FAFC;"></div>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 20px;">
+            <div class="config-option-title">
+              <span>Estimated Salem MSRP</span>
+            </div>
+            <div id="configuratorPrice" class="price-display">$189,500</div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">
+              Includes 5-Year Unlimited Salem Track Warranty &amp; Home Charger Installation.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 14px; margin-top: 10px;">
+            <a href="get-started.html" class="btn btn-primary" style="flex: 1;">Order Custom Build</a>
+            <a href="contact.html" class="btn btn-glass">Talk to Salem Specialist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: CUSTOMER REVIEWS & TESTIMONIALS
+       ========================================== -->
+  <section class="section" style="background: rgba(13, 19, 32, 0.5);">
+    <div class="container">
+      <div class="text-center reveal">
+        <div class="section-subtitle">
+          <i class="bi bi-chat-quote-fill text-primary"></i> Owner Experiences
+        </div>
+        <h2 class="section-title">
+          What Our <span>Drivers Say</span>
+        </h2>
+        <p class="section-desc">
+          Read real testimonials from luxury enthusiasts and supercar owners across Salem, Tamil Nadu, and India.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 40px;">
+        
+        <!-- Review 1 -->
+        <div class="spec-item reveal-up delay-1" style="padding: 28px; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--glass-border);">
+          <div style="display: flex; gap: 4px; color: var(--accent-gold); margin-bottom: 14px;">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-main); font-style: italic; margin-bottom: 20px;">
+            "Stackly Automotive in Salem delivered my Stackly Aero EV ahead of schedule! The acceleration is insane, and their Salem white-glove delivery service was world-class."
+          </p>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Reviewer" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+            <div>
+              <strong style="display: block; font-size: 0.95rem;">Ananya Ramakrishnan</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Salem, Tamil Nadu • Aero EV Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="spec-item reveal-up delay-2" style="padding: 28px; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--glass-border);">
+          <div style="display: flex; gap: 4px; color: var(--accent-gold); margin-bottom: 14px;">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-main); font-style: italic; margin-bottom: 20px;">
+            "The Spectre V12 sound is pure symphony. Taking it out on the Yercaud hill climb road near Salem is an unbelievable experience. Stackly is unmatched!"
+          </p>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Reviewer" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+            <div>
+              <strong style="display: block; font-size: 0.95rem;">Karthik Sundaram</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Coimbatore, TN • Spectre V12 Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="spec-item reveal-up delay-3" style="padding: 28px; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--glass-border);">
+          <div style="display: flex; gap: 4px; color: var(--accent-gold); margin-bottom: 14px;">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--text-main); font-style: italic; margin-bottom: 20px;">
+            "The executive rear recliners and air suspension in the Phantom make long highway drives effortless. Best automotive showroom in Tamil Nadu!"
+          </p>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Reviewer" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+            <div>
+              <strong style="display: block; font-size: 0.95rem;">Vikramaditya Rao</strong>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Bengaluru • Phantom Sedan Owner</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 6: LATEST BLOG & AUTOMOTIVE INSIGHTS
+       ========================================== -->
+  <section class="section">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;" class="reveal">
+        <div>
+          <div class="section-subtitle">
+            <i class="bi bi-newspaper text-primary"></i> Automotive Insights
+          </div>
+          <h2 class="section-title">
+            Latest News &amp; <span>Articles</span>
+          </h2>
+        </div>
+        <a href="blog.html" class="btn btn-outline">View All Articles <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+        
+        <!-- Article 1 -->
+        <article class="blog-card reveal-up delay-1">
+          <div class="blog-card-img">
+            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" alt="Electric Hypercar Tech">
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-date">SEPTEMBER 24, 2026 • EV TECHNOLOGY</div>
+            <h3 class="blog-title">Inside Stackly's 800V Solid-State Battery Breakthrough in Salem</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
+              Discover how our Salem R&amp;D engineering lab achieved 520 miles range in sub-zero and tropical conditions.
+            </p>
+            <a href="blog.html" class="btn btn-glass btn-sm">Read Story <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="blog-card reveal-up delay-2">
+          <div class="blog-card-img">
+            <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Supercar Aerodynamics">
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-date">SEPTEMBER 18, 2026 • DESIGN & AERO</div>
+            <h3 class="blog-title">Designing Active Aerodynamics for Speeds Over 200 MPH</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
+              An inside look into fluid dynamics testing and carbon fiber wing deployment algorithms.
+            </p>
+            <a href="blog.html" class="btn btn-glass btn-sm">Read Story <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="blog-card reveal-up delay-3">
+          <div class="blog-card-img">
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80" alt="Supercar Salem Rally">
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-date">SEPTEMBER 10, 2026 • EVENTS & COMMUNITY</div>
+            <h3 class="blog-title">Stackly Owners Track Day Rally: Yercaud Hill Climb 2026</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
+              Highlights from our annual gathering of 50+ Stackly supercars driving through Salem's iconic hairpin bends.
+            </p>
+            <a href="blog.html" class="btn btn-glass btn-sm">Read Story <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 7: LOCATION & CALL TO ACTION BANNER
+       ========================================== -->
+  <section class="section" style="position: relative; overflow: hidden;">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(59, 130, 246, 0.15) 100%); border: 1px solid var(--primary-glow); border-radius: var(--radius-lg); padding: 60px 40px; text-align: center; backdrop-filter: blur(20px);" class="reveal-scale">
+        <div class="section-subtitle">
+          <i class="bi bi-geo-alt-fill text-primary"></i> Salem Headquarters
+        </div>
+        <h2 class="section-title" style="max-width: 700px; margin: 0 auto 16px auto;">
+          Ready to Experience the <span>Thrill of Stackly?</span>
+        </h2>
+        <p class="section-desc" style="margin-bottom: 32px;">
+          Visit our flagship showroom at Salem, Tamil Nadu, India or schedule a private concierge test drive today.
+        </p>
+
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="get-started.html" class="btn btn-primary"><i class="bi bi-speedometer2"></i> Book Private Test Drive</a>
+          <a href="contact.html" class="btn btn-glass"><i class="bi bi-telephone-fill"></i> Contact Salem HQ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SITE FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="assets/logo.png" alt="Stackly Logo">
+          </a>
+          <p>
+            Stackly Automotive is a premier manufacturer of ultra-luxury supercars, high-performance electric vehicles, and bespoke engineering.
+          </p>
+          <div class="footer-address">
+            <div><i class="bi bi-geo-alt-fill"></i> Main Showroom, Five Roads Junction, Salem, Tamil Nadu, India - 636004</div>
+            <div><i class="bi bi-telephone-fill"></i> +91 (0427) 299-8800</div>
+            <div><i class="bi bi-envelope-fill"></i> concierge@stacklyauto.in</div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-title">Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home Showroom</a>
+            <a href="about.html">About Stackly</a>
+            <a href="get-started.html">Fleet Showcase</a>
+            <a href="blog.html">Automotive News</a>
+            <a href="contact.html">Contact Salem HQ</a>
+            <a href="signin.html">Owner Portal</a>
+          </div>
+        </div>
+
+        <!-- Secondary Links (redirect to 404 if dead) -->
+        <div>
+          <h4 class="footer-title">Services &amp; Legal</h4>
+          <div class="footer-links">
+            <a href="#" data-redirect-404="true">Salem Track Pass</a>
+            <a href="#" data-redirect-404="true">Bespoke Customization</a>
+            <a href="#" data-redirect-404="true">Trade-In Valuation</a>
+            <a href="#" data-redirect-404="true">Privacy Policy</a>
+            <a href="#" data-redirect-404="true">Terms of Service</a>
+            <a href="404.html">404 Error Preview</a>
+          </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="footer-title">Salem VIP Newsletter</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+            Subscribe to receive exclusive invites to Stackly private supercar launches in Salem and Tamil Nadu.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed to Stackly VIP Salem Updates!', 'bi-envelope-check');">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-send"></i></button>
+          </form>
+
+          <div class="social-icons" style="display: flex; gap: 12px; margin-top: 16px; justify-content: flex-start;">
+            <a href="404.html" class="social-icon-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="404.html" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="404.html" class="social-icon-btn" title="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="404.html" class="social-icon-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div>&copy; 2026 Stackly Automotive Ltd. All Rights Reserved. Headquartered in Salem, Tamil Nadu, India.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" data-redirect-404="true">Privacy</a>
+          <a href="#" data-redirect-404="true">Cookies</a>
+          <a href="#" data-redirect-404="true">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

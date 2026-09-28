@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Dashboard - Stackly Automotive | Salem, Tamil Nadu</title>
+  <meta name="description" content="Stackly Automotive Owner Telematics & Vehicle Controls Dashboard. Manage garage, telemetry, and Salem track passes.">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/logo.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header scrolled">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo.png" alt="Stackly Logo">
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="fleet-showcase.html" class="nav-link">Fleet Showcase</a>
+        <a href="owner-dashboard.html" class="nav-link active">Owner Garage</a>
+        <a href="get-started-dashboard.html" class="nav-link">Order Tracker</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span style="font-size: 0.85rem; color: var(--primary); font-weight: 600;"><i class="bi bi-shield-check"></i> VIP Owner</span>
+        <a href="signin.html" class="btn btn-glass btn-sm"><i class="bi bi-box-arrow-right"></i> Sign Out</a>
+        <button class="mobile-toggle"><i class="bi bi-list"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-nav-overlay"></div>
+  <div class="mobile-nav-menu">
+    <div>
+      <div class="mobile-nav-header">
+        <a href="index.html" class="brand-logo"><img src="assets/logo.png" alt="Stackly Logo"></a>
+        <button class="mobile-nav-close" style="background:none; border:none; color:#fff; font-size:1.5rem;"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="owner-dashboard.html" class="nav-link active">Owner Garage</a>
+        <a href="get-started-dashboard.html" class="nav-link">Order Tracker</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="signin.html" class="nav-link">Sign Out</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD MAIN -->
+  <main class="dashboard-container container">
+    <div class="hero-bg-shapes">
+      <div class="shape-blob blob-1"></div>
+      <div class="shape-blob blob-2"></div>
+    </div>
+
+    <!-- User & Vehicle Header -->
+    <div class="dashboard-header reveal-down">
+      <div class="dashboard-user-info">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Owner Avatar" class="user-avatar">
+        <div>
+          <h1 style="font-size: 1.6rem; margin-bottom: 2px;">Welcome Back, Arjun Ramachandran</h1>
+          <p style="color: var(--text-muted); font-size: 0.85rem;">
+            Stackly Aero Hyper EV Owner • Vehicle ID: <span style="color: var(--primary);">#STK-EV-SALEM-409</span>
+          </p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 12px;">
+        <button class="btn btn-glass btn-sm" onclick="showToast('Refreshing Telematics Connection to Salem Server...', 'bi-arrow-clockwise')">
+          <i class="bi bi-arrow-clockwise"></i> Sync Telematics
+        </button>
+        <a href="contact.html" class="btn btn-primary btn-sm"><i class="bi bi-telephone-fill"></i> Salem VIP Concierge</a>
+      </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="dashboard-grid">
+      
+      <!-- Left Column: Vehicle Controls & Telematics -->
+      <div>
+        
+        <!-- Live Vehicle Card -->
+        <div class="dashboard-card reveal-up delay-1">
+          <div class="dashboard-card-title">
+            <span><i class="bi bi-car-front-fill text-primary"></i> Stackly Aero Hyper EV (Salem Edition)</span>
+            <span class="section-subtitle" style="margin: 0; padding: 4px 12px; font-size: 0.75rem;"><i class="bi bi-wifi text-success"></i> Connected Live</span>
+          </div>
+
+          <div style="position: relative; text-align: center; margin: 20px 0;">
+            <img id="dashboardCarPreview" src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80" alt="Stackly Aero EV" style="width: 100%; max-height: 320px; object-fit: contain; filter: drop-shadow(0 15px 25px rgba(0, 240, 255, 0.25));">
+          </div>
+
+          <!-- Remote Controls Grid -->
+          <h4 style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 14px;">Remote Vehicle Controls</h4>
+          <div class="remote-controls-grid">
+            <button class="remote-btn" onclick="this.classList.toggle('active'); showToast(this.classList.contains('active') ? 'Vehicle Doors Locked' : 'Vehicle Doors Unlocked', 'bi-lock-fill');">
+              <i class="bi bi-lock-fill"></i>
+              <span style="font-size: 0.8rem; font-weight: 600;">Lock / Unlock</span>
+            </button>
+            <button class="remote-btn" onclick="this.classList.toggle('active'); showToast('Pre-conditioning Climate to 22°C', 'bi-thermometer-half');">
+              <i class="bi bi-thermometer-half"></i>
+              <span style="font-size: 0.8rem; font-weight: 600;">Climate 22°C</span>
+            </button>
+            <button class="remote-btn" onclick="showToast('Headlights & Horn Triggered', 'bi-headlights-fill');">
+              <i class="bi bi-headlights-fill"></i>
+              <span style="font-size: 0.8rem; font-weight: 600;">Flash &amp; Horn</span>
+            </button>
+            <button class="remote-btn" onclick="this.classList.toggle('active'); showToast('Track Mode Activated (Full 1020 HP)', 'bi-speedometer2');">
+              <i class="bi bi-speedometer2"></i>
+              <span style="font-size: 0.8rem; font-weight: 600;">Track Mode</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Real-Time Telematics Grid -->
+        <div class="dashboard-card reveal-up delay-2">
+          <div class="dashboard-card-title">
+            <span><i class="bi bi-cpu-fill text-primary"></i> Real-Time Telematics &amp; Diagnostics</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Updated 1 min ago</span>
+          </div>
+
+          <div class="telematics-grid">
+            <div class="telemetric-box">
+              <label><i class="bi bi-battery-charging text-success"></i> Battery Charge</label>
+              <strong>88%</strong>
+              <div style="font-size: 0.78rem; color: var(--primary); margin-top: 4px;">485 km Est. Range</div>
+            </div>
+
+            <div class="telemetric-box">
+              <label><i class="bi bi-speedometer text-warning"></i> Tire Pressure</label>
+              <strong>34 PSI</strong>
+              <div style="font-size: 0.78rem; color: #10B981; margin-top: 4px;">All 4 Tires Nominal</div>
+            </div>
+
+            <div class="telemetric-box">
+              <label><i class="bi bi-gear-wide-connected text-primary"></i> Software OS</label>
+              <strong>v4.2.1</strong>
+              <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">StacklyOS Up-To-Date</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Salem Track Pass & Service Concierge -->
+      <div>
+        
+        <!-- Salem VIP Track Pass Card -->
+        <div class="dashboard-card reveal-up delay-2" style="background: linear-gradient(135deg, rgba(13, 19, 32, 0.9), rgba(0, 240, 255, 0.08)); border-color: var(--primary-glow);">
+          <div class="dashboard-card-title">
+            <span style="color: var(--primary);"><i class="bi bi-award-fill"></i> Salem VIP Track Pass</span>
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+              Unlimited circuit access at Salem Track Arena &amp; Yercaud Hill Climb Telemetry.
+            </p>
+            <div style="background: rgba(255, 255, 255, 0.04); padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--glass-border);">
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px;">
+                <span>Pass Status:</span>
+                <strong style="color: var(--primary);">ACTIVE • UNLIMITED</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                <span>Valid Until:</span>
+                <strong style="color: #fff;">DECEMBER 2027</strong>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-sm" style="width: 100%;" onclick="showToast('Track Pass QR Generated & Sent to Phone', 'bi-qr-code')">
+            <i class="bi bi-qr-code"></i> Show Track Pass QR
+          </button>
+        </div>
+
+        <!-- Maintenance & Service Scheduler -->
+        <div class="dashboard-card reveal-up delay-3">
+          <div class="dashboard-card-title">
+            <span><i class="bi bi-tools text-primary"></i> Salem Service Status</span>
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 10px;">
+              <div>
+                <strong style="display: block; color: #fff;">Next Service Inspection</strong>
+                <span>15,000 KM Maintenance</span>
+              </div>
+              <span class="btn btn-glass btn-sm" style="padding: 4px 10px; font-size: 0.75rem;">In 4,200 km</span>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="display: block; color: #fff;">Assigned Salem Specialist</strong>
+                <span>Vikram R. (Lead EV Technician)</span>
+              </div>
+              <a href="contact.html" class="btn btn-outline btn-sm" style="padding: 4px 10px; font-size: 0.75rem;"><i class="bi bi-chat-dots"></i> Message</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="social-icons" style="display: flex; gap: 12px; margin-top: 16px; justify-content: flex-start;">
+            <a href="404.html" class="social-icon-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="404.html" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="404.html" class="social-icon-btn" title="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="404.html" class="social-icon-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>&copy; 2026 Stackly Automotive Owner Garage. Salem, Tamil Nadu, India.</div>
+        <div style="display: flex; gap: 16px;">
+          <a href="index.html">Home</a>
+          <a href="get-started-dashboard.html">Order Tracker</a>
+          <a href="contact.html">Concierge</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

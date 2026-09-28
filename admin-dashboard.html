@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Stackly Automotive | Salem HQ</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#00F0FF;--primary-light:#38bdf8;--primary-dark:#00A8FF;--accent:#FF385C;--accent-hover:#E0284B;--secondary:#3B82F6;--success:#10B981;--warning:#FFB800;--dark:#090D16;--surface-dark:#0F172A;--body:#94A3B8;--text-main:#F8FAFC;--muted:#64748B;--bg:#060911;--surface:#0D1322;--border:rgba(255,255,255,0.08);--sidebar-w:260px;--radius:14px;--radius-lg:24px;--radius-pill:9999px;--shadow-sm:0 2px 8px rgba(0,0,0,0.4);--shadow-md:0 8px 24px -6px rgba(0,240,255,0.15);--shadow-lg:0 20px 40px -15px rgba(0,240,255,0.25)}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text-main);display:flex;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif;color:var(--text-main);font-weight:700}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:linear-gradient(180deg,#090D16 0%,#0F172A 100%);color:#94A3B8;display:flex;flex-direction:column;z-index:100;transition:transform .35s ease;border-right:1px solid var(--border)}
+.sidebar-logo{padding:28px 24px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center}
+.sidebar-logo img{height:42px;width:auto;object-fit:contain}
+.sidebar-nav{flex:1;padding:20px 14px;display:flex;flex-direction:column;gap:4px;overflow-y:auto}
+.nav-item{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:12px;font-size:.9rem;font-weight:600;color:#94A3B8;cursor:pointer;transition:all .25s ease;border-left:3px solid transparent}
+.nav-item:hover{background:rgba(255,255,255,0.06);color:#E2E8F0}
+.nav-item.active{background:rgba(0,240,255,0.15);color:#FFFFFF;border-left-color:var(--primary)}
+.nav-item i{font-size:1.15rem;width:22px;text-align:center}
+.sidebar-footer{padding:16px 18px;border-top:1px solid var(--border)}
+.admin-pill{display:flex;align-items:center;gap:12px;padding:10px 14px;background:rgba(255,255,255,0.04);border-radius:12px;margin-bottom:10px;border:1px solid var(--border)}
+.admin-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#050B14;font-weight:800;font-size:.85rem;flex-shrink:0}
+.admin-info strong{display:block;color:#FFF;font-size:.88rem}
+.admin-info span{font-size:.75rem;color:var(--primary)}
+.logout-link{display:flex;align-items:center;gap:8px;color:#64748B;font-size:.85rem;font-weight:600;padding:6px 14px;transition:color .2s}
+.logout-link:hover{color:var(--accent)}
+
+/* MAIN */
+.main{margin-left:var(--sidebar-w);flex:1;padding:32px 36px;min-height:100vh}
+
+/* TOP BAR */
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.topbar-left h1{font-size:1.65rem;margin-bottom:4px}
+.topbar-left p{color:var(--muted);font-size:.9rem}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.notif-btn{position:relative;width:44px;height:44px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.15rem;color:var(--text-main);transition:all .2s}
+.notif-btn:hover{border-color:var(--primary);color:var(--primary);box-shadow:var(--shadow-md)}
+.notif-dot{position:absolute;top:10px;right:10px;width:8px;height:8px;background:var(--accent);border-radius:50%;border:2px solid var(--surface)}
+.topbar-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#050B14;font-weight:800}
+
+/* STAT CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:32px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:all .3s ease;position:relative;overflow:hidden}
+.stat-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:var(--shadow-lg)}
+.stat-card::after{content:'';position:absolute;top:0;right:0;width:100px;height:100px;border-radius:50%;opacity:.08;transform:translate(30px,-30px)}
+.stat-card:nth-child(1)::after{background:var(--primary)}
+.stat-card:nth-child(2)::after{background:var(--success)}
+.stat-card:nth-child(3)::after{background:var(--accent)}
+.stat-card:nth-child(4)::after{background:var(--warning)}
+.stat-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:16px;color:#050B14;font-weight:800}
+.stat-card:nth-child(1) .stat-icon{background:linear-gradient(135deg,var(--primary),var(--secondary))}
+.stat-card:nth-child(2) .stat-icon{background:linear-gradient(135deg,#10B981,#059669)}
+.stat-card:nth-child(3) .stat-icon{background:linear-gradient(135deg,var(--accent),var(--accent-hover));color:#FFF}
+.stat-card:nth-child(4) .stat-icon{background:linear-gradient(135deg,var(--warning),#D97706)}
+.stat-value{font-size:2rem;font-weight:800;color:var(--text-main);font-family:'Outfit',sans-serif;margin-bottom:4px}
+.stat-label{color:var(--muted);font-size:.88rem;font-weight:600}
+.stat-trend{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:var(--radius-pill);margin-top:10px}
+.trend-up{background:rgba(16,185,129,0.15);color:#10B981}
+
+/* CONTENT GRID */
+.content-grid{display:grid;grid-template-columns:1.4fr 0.6fr;gap:24px;margin-bottom:32px}
+
+/* CHART */
+.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px}
+.chart-card h3{margin-bottom:6px;font-size:1.15rem}
+.chart-card .chart-sub{color:var(--muted);font-size:.85rem;margin-bottom:24px}
+.bar-chart{display:flex;align-items:flex-end;gap:12px;height:200px;padding-top:10px}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.bar{border-radius:8px 8px 4px 4px;width:100%;background:linear-gradient(180deg,var(--primary),var(--secondary));transition:height .6s cubic-bezier(.34,1.25,.64,1);position:relative;min-height:10px;cursor:pointer}
+.bar:hover{filter:brightness(1.2);box-shadow:0 4px 16px rgba(0,240,255,0.4)}
+.bar-label{font-size:.75rem;font-weight:700;color:var(--muted)}
+.bar-val{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:.7rem;font-weight:700;color:var(--primary);opacity:0;transition:opacity .2s}
+.bar:hover .bar-val{opacity:1}
+
+/* POPULAR PACKAGES / CARS */
+.popular-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px}
+.popular-card h3{margin-bottom:20px;font-size:1.15rem}
+.pkg-item{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border)}
+.pkg-item:last-child{border-bottom:none}
+.pkg-rank{width:32px;height:32px;border-radius:50%;background:rgba(0,240,255,0.12);color:var(--primary);font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pkg-info{flex:1}
+.pkg-info strong{display:block;font-size:.9rem;color:var(--text-main)}
+.pkg-info span{font-size:.78rem;color:var(--muted)}
+.pkg-count{font-size:.82rem;font-weight:700;color:var(--success);background:rgba(16,185,129,0.15);padding:4px 10px;border-radius:var(--radius-pill)}
+
+/* TABLE */
+.table-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:32px}
+.table-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.table-header h3{font-size:1.15rem}
+.table-header .view-all{color:var(--primary);font-weight:700;font-size:.88rem}
+table{width:100%;border-collapse:collapse}
+thead th{text-align:left;font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;padding:12px 14px;border-bottom:2px solid var(--border)}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:rgba(0,240,255,0.03)}
+tbody td{padding:14px;font-size:.9rem;border-bottom:1px solid var(--border);vertical-align:middle}
+.status-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:var(--radius-pill);font-size:.78rem;font-weight:700}
+.status-confirmed{background:rgba(16,185,129,0.15);color:#10B981}
+.status-pending{background:rgba(255,184,0,0.15);color:var(--warning)}
+.status-cancelled{background:rgba(239,68,68,0.15);color:#EF4444}
+.customer-cell{display:flex;align-items:center;gap:10px}
+.customer-avatar{width:34px;height:34px;border-radius:50%;background:rgba(0,240,255,0.1);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;color:var(--primary);flex-shrink:0}
+
+/* QUICK ACTIONS */
+.actions-row{display:flex;gap:14px;margin-bottom:32px}
+.action-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 24px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--surface);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.9rem;color:var(--text-main);cursor:pointer;transition:all .25s}
+.action-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(0,240,255,0.08);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.action-btn i{font-size:1.1rem}
+.action-btn.primary-action{background:linear-gradient(135deg,var(--primary),var(--secondary));color:#050B14;border-color:transparent;box-shadow:0 8px 24px rgba(0,240,255,0.3)}
+.action-btn.primary-action:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,240,255,0.5);color:#000}
+
+/* MOBILE */
+.mobile-menu-btn{display:none;position:fixed;top:20px;left:20px;z-index:200;width:44px;height:44px;border-radius:12px;background:var(--surface);border:1px solid var(--border);color:#FFF;font-size:1.3rem;cursor:pointer;align-items:center;justify-content:center}
+@media(max-width:1024px){
+  .sidebar{width:min(82vw,var(--sidebar-w));transform:translateX(-100%);box-shadow:var(--shadow-lg)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0;padding:24px 18px;padding-top:72px}
+  .mobile-menu-btn{display:flex}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .content-grid{grid-template-columns:1fr}
+  .actions-row{flex-wrap:wrap}
+}
+@media(max-width:640px){
+  .stats-grid{grid-template-columns:1fr}
+  .topbar{flex-direction:column;align-items:flex-start;gap:16px}
+}
+</style>
+</head>
+<body>
+
+<button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')"><i class="bi bi-list"></i></button>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <a href="index.html"><img src="assets/logo.png" alt="Stackly Logo"></a>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="admin-dashboard.html" class="nav-item active"><i class="bi bi-grid-1x2-fill"></i> HQ Dashboard</a>
+    <a href="get-started-dashboard.html" class="nav-item"><i class="bi bi-calendar-check"></i> Fleet Reservations</a>
+    <a href="get-started.html" class="nav-item"><i class="bi bi-car-front-fill"></i> Model Inventory</a>
+    <a href="owner-dashboard.html" class="nav-item"><i class="bi bi-people"></i> VIP Drivers &amp; Owners</a>
+    <a href="404.html" class="nav-item"><i class="bi bi-currency-dollar"></i> Revenue Telemetry</a>
+    <a href="blog.html" class="nav-item"><i class="bi bi-newspaper"></i> Press &amp; Journal</a>
+    <a href="contact.html" class="nav-item"><i class="bi bi-gear"></i> Settings</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="admin-pill">
+      <div class="admin-avatar">SS</div>
+      <div class="admin-info"><strong>Sundaram S.</strong><span>Salem HQ Admin</span></div>
+    </div>
+    <a href="signin.html" class="logout-link"><i class="bi bi-box-arrow-left"></i> Sign Out</a>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>Welcome back, Sundaram!</h1>
+      <p><i class="bi bi-calendar3"></i> <span id="currentDate"></span> &bull; Stackly Salem Headquarters</p>
+    </div>
+    <div class="topbar-right">
+      <div class="notif-btn" onclick="showToast('3 New Supercar Reservations Received', 'bi-bell-fill')"><i class="bi bi-bell"></i><span class="notif-dot"></span></div>
+      <div class="topbar-avatar">SS</div>
+    </div>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon"><i class="bi bi-car-front-fill"></i></div>
+      <div class="stat-value">1,247</div>
+      <div class="stat-label">Total Fleet Reservations</div>
+      <div class="stat-trend trend-up"><i class="bi bi-arrow-up-short"></i> +12.5% this month</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="bi bi-currency-dollar"></i></div>
+      <div class="stat-value">$18.5M</div>
+      <div class="stat-label">Revenue This Month</div>
+      <div class="stat-trend trend-up"><i class="bi bi-arrow-up-short"></i> +8.3% vs last month</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="bi bi-speedometer2"></i></div>
+      <div class="stat-value">38</div>
+      <div class="stat-label">Active Track Drives Running</div>
+      <div class="stat-trend trend-up"><i class="bi bi-arrow-up-short"></i> +5 new this week</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="bi bi-emoji-smile"></i></div>
+      <div class="stat-value">99.4%</div>
+      <div class="stat-label">Customer Satisfaction</div>
+      <div class="stat-trend trend-up"><i class="bi bi-arrow-up-short"></i> +0.3% rating boost</div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <div class="chart-card">
+      <h3>Weekly Revenue Overview ($)</h3>
+      <p class="chart-sub">Sales distribution across Salem HQ &amp; experience hubs</p>
+      <div class="bar-chart">
+        <div class="bar-col"><div class="bar" style="height:55%"><span class="bar-val">$210k</span></div><span class="bar-label">Mon</span></div>
+        <div class="bar-col"><div class="bar" style="height:72%"><span class="bar-val">$280k</span></div><span class="bar-label">Tue</span></div>
+        <div class="bar-col"><div class="bar" style="height:48%"><span class="bar-val">$190k</span></div><span class="bar-label">Wed</span></div>
+        <div class="bar-col"><div class="bar" style="height:90%"><span class="bar-val">$350k</span></div><span class="bar-label">Thu</span></div>
+        <div class="bar-col"><div class="bar" style="height:65%"><span class="bar-val">$250k</span></div><span class="bar-label">Fri</span></div>
+        <div class="bar-col"><div class="bar" style="height:100%"><span class="bar-val">$420k</span></div><span class="bar-label">Sat</span></div>
+        <div class="bar-col"><div class="bar" style="height:78%"><span class="bar-val">$310k</span></div><span class="bar-label">Sun</span></div>
+      </div>
+    </div>
+
+    <div class="popular-card">
+      <h3><i class="bi bi-fire text-accent" style="margin-right:6px"></i>Popular Models</h3>
+      <div class="pkg-item"><div class="pkg-rank">1</div><div class="pkg-info"><strong>Stackly Spectre V12</strong><span>Salem Flagship HQ</span></div><span class="pkg-count">342 reserved</span></div>
+      <div class="pkg-item"><div class="pkg-rank">2</div><div class="pkg-info"><strong>Stackly Aero Hyper EV</strong><span>Salem EV Lab</span></div><span class="pkg-count">289 reserved</span></div>
+      <div class="pkg-item"><div class="pkg-rank">3</div><div class="pkg-info"><strong>Stackly Phantom Sedan</strong><span>Executive Hub</span></div><span class="pkg-count">256 reserved</span></div>
+      <div class="pkg-item"><div class="pkg-rank">4</div><div class="pkg-info"><strong>Stackly Apex Track SUV</strong><span>Salem All-Terrain</span></div><span class="pkg-count">218 reserved</span></div>
+      <div class="pkg-item"><div class="pkg-rank">5</div><div class="pkg-info"><strong>Stackly GT Roadster</strong><span>Open-Top GT</span></div><span class="pkg-count">195 reserved</span></div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-header">
+      <h3>Recent Vehicle Reservations</h3>
+      <a href="get-started-dashboard.html" class="view-all">View All Orders <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <table>
+      <thead><tr><th>Order ID</th><th>Customer Driver</th><th>Vehicle Model</th><th>Test Drive Date</th><th>MSRP</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>#STK-1247</td><td><div class="customer-cell"><div class="customer-avatar">PK</div><div><strong>Priya Krishnan</strong></div></div></td><td>Stackly Spectre V12</td><td>Oct 02, 2026</td><td>$240,000</td><td><span class="status-badge status-confirmed"><i class="bi bi-check-circle-fill"></i> Confirmed</span></td></tr>
+        <tr><td>#STK-1246</td><td><div class="customer-cell"><div class="customer-avatar">AR</div><div><strong>Arun Ramachandran</strong></div></div></td><td>Stackly Aero Hyper EV</td><td>Oct 05, 2026</td><td>$189,500</td><td><span class="status-badge status-confirmed"><i class="bi bi-check-circle-fill"></i> Confirmed</span></td></tr>
+        <tr><td>#STK-1245</td><td><div class="customer-cell"><div class="customer-avatar">DS</div><div><strong>Deepika Sundaram</strong></div></div></td><td>Stackly Phantom Sedan</td><td>Oct 10, 2026</td><td>$165,000</td><td><span class="status-badge status-pending"><i class="bi bi-clock"></i> Spec Pending</span></td></tr>
+        <tr><td>#STK-1244</td><td><div class="customer-cell"><div class="customer-avatar">VB</div><div><strong>Venkatesh Balan</strong></div></div></td><td>Stackly Apex Track SUV</td><td>Oct 12, 2026</td><td>$142,000</td><td><span class="status-badge status-confirmed"><i class="bi bi-check-circle-fill"></i> Confirmed</span></td></tr>
+        <tr><td>#STK-1243</td><td><div class="customer-cell"><div class="customer-avatar">MK</div><div><strong>Meena Kumar</strong></div></div></td><td>Stackly GT Roadster</td><td>Oct 15, 2026</td><td>$210,000</td><td><span class="status-badge status-pending"><i class="bi bi-clock"></i> Spec Pending</span></td></tr>
+        <tr><td>#STK-1242</td><td><div class="customer-cell"><div class="customer-avatar">RS</div><div><strong>Rajesh Sharma</strong></div></div></td><td>Stackly Cyber EV Pickup</td><td>Sep 28, 2026</td><td>$178,000</td><td><span class="status-badge status-cancelled"><i class="bi bi-x-circle-fill"></i> Cancelled</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actions-row">
+    <button class="action-btn primary-action" onclick="showToast('New Vehicle Spec Modal Opened', 'bi-plus-circle')"><i class="bi bi-plus-circle"></i> Add New Vehicle Model</button>
+    <button class="action-btn" onclick="showToast('VIP Broadcast SMS Prepared', 'bi-chat-dots')"><i class="bi bi-chat-dots"></i> Send VIP Broadcast</button>
+    <button class="action-btn" onclick="showToast('Exporting Financial Telemetry Report...', 'bi-download')"><i class="bi bi-download"></i> Export Telemetry Report</button>
+    <button class="action-btn" onclick="showToast('Printing Fleet Manifest...', 'bi-printer')"><i class="bi bi-printer"></i> Print Fleet Manifest</button>
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+<script>
+document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+</script>
+</body>
+</html>
+
+<div class="social-icons" style="display: flex; gap: 12px; margin-top: 16px; justify-content: flex-start;">
+            <a href="404.html" class="social-icon-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="404.html" class="social-icon-btn" title="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="404.html" class="social-icon-btn" title="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="404.html" class="social-icon-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>

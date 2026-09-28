@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started Dashboard - Stackly Supercar Reservation & Order Tracker</title>
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--primary:#38BDF8;--primary-glow:rgba(56,189,248,0.3);--accent:#FF512F;--accent-glow:rgba(255,81,47,0.3);--bg:#040914;--surface:#0B132B;--card-bg:rgba(15,23,42,0.9);--border:rgba(56,189,248,0.18);--text:#F8FAFC;--muted:#94A3B8;--sidebar-w:260px}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:radial-gradient(circle at 15% 15%, #0d1b2a 0%, #030712 60%, #000 100%);color:var(--text);display:flex;min-height:100vh;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Outfit',sans-serif;color:#FFF}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;padding:20px 0}
+.sidebar-logo{padding:0 24px 20px;border-bottom:1px solid var(--border)}
+.sidebar-logo img{height:44px}
+.nav-group{padding:20px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.nav-link-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;color:var(--muted);font-weight:600;font-size:0.9rem;transition:all 0.25s;text-decoration:none}
+.nav-link-item:hover, .nav-link-item.active{background:rgba(56,189,248,0.15);color:var(--primary);box-shadow:0 0 15px var(--primary-glow)}
+.nav-link-item i{font-size:1.15rem;color:var(--primary)}
+
+/* MAIN CONTENT */
+.main-content{margin-left:var(--sidebar-w);flex:1;padding:32px 36px;min-height:100vh}
+.top-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+
+/* HERO ORDER BANNER */
+.order-hero-banner{background:linear-gradient(135deg,rgba(11,19,43,0.95),rgba(56,189,248,0.12));border:1px solid var(--border);border-radius:24px;padding:32px;display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;box-shadow:0 20px 50px rgba(0,0,0,0.6)}
+
+/* STEPPER TIMELINE */
+.stepper-box{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:32px;margin-bottom:30px}
+.stepper-steps{display:flex;justify-content:space-between;position:relative;margin-top:28px}
+.stepper-line{position:absolute;top:22px;left:40px;right:40px;height:4px;background:rgba(255,255,255,0.1);z-index:1}
+.stepper-line-active{position:absolute;top:22px;left:40px;width:45%;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));z-index:2}
+.step-node{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.step-circle{width:46px;height:46px;border-radius:50%;background:#040914;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted);font-size:1rem}
+.step-node.completed .step-circle{background:var(--primary);color:#040914;border-color:var(--primary);box-shadow:0 0 15px var(--primary-glow)}
+.step-node.active .step-circle{border-color:var(--accent);color:var(--accent);box-shadow:0 0 15px var(--accent-glow);background:rgba(255,81,47,0.1)}
+
+/* GRID */
+.order-grid{display:grid;grid-template-columns:1.3fr 0.7fr;gap:30px}
+.order-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:28px;margin-bottom:30px}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-glass:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #040914;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px var(--primary-glow);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--primary-glow);
+  color: #000;
+}
+
+@media (max-width: 992px) {
+  .sidebar{transform:translateX(-100%)}
+  .main-content{margin-left:0;padding:20px}
+  .order-grid{grid-template-columns:1fr}
+  .order-hero-banner{flex-direction:column;text-align:center;gap:20px}
+  .stepper-steps{flex-direction:column;gap:20px;align-items:flex-start}
+  .stepper-line, .stepper-line-active{display:none}
+  .step-node{flex-direction:row;gap:14px}
+}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <a href="index.html"><img src="assets/logo.png" alt="Stackly Logo"></a>
+  </div>
+  <div class="nav-group">
+    <a href="getstarted-dashboard.html" class="nav-link-item active"><i class="bi bi-diagram-3-fill"></i> Get Started Dashboard</a>
+    <a href="signin-dashboard.html" class="nav-link-item"><i class="bi bi-cpu-fill"></i> Telematics Garage</a>
+    <a href="fleet-showcase.html" class="nav-link-item"><i class="bi bi-car-front-fill"></i> Fleet Showcase</a>
+    <a href="user-dashboard.html" class="nav-link-item"><i class="bi bi-person-badge"></i> VIP Owner Portal</a>
+    <a href="contact.html" class="nav-link-item"><i class="bi bi-headset"></i> Salem Concierge</a>
+  </div>
+  <div style="padding:20px 24px; border-top:1px solid var(--border);">
+    <a href="get-started.html" style="color:var(--accent); font-weight:700; display:flex; align-items:center; gap:8px; text-decoration:none;"><i class="bi bi-plus-lg"></i> New Reservation</a>
+  </div>
+</aside>
+
+<main class="main-content">
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <div>
+      <span style="color:var(--primary); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;"><i class="bi bi-check-circle-fill text-primary"></i> RESERVATION LOCK ACTIVE</span>
+      <h1 style="font-size:1.8rem; margin-top:4px;">Get Started Dashboard: Order Tracker</h1>
+    </div>
+    <div style="display:flex; gap:12px;">
+      <button class="btn-glass" onclick="showToast('Pass Downloaded as PDF', 'bi-file-earmark-pdf-fill')"><i class="bi bi-download"></i> Download Pass PDF</button>
+      <a href="contact.html" class="btn-primary"><i class="bi bi-headset"></i> Talk to Salem Advisor</a>
+    </div>
+  </div>
+
+  <!-- ORDER HERO BANNER -->
+  <div class="order-hero-banner">
+    <div>
+      <span style="background:rgba(56,189,248,0.15); color:var(--primary); padding:4px 14px; border-radius:20px; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; display:inline-block; margin-bottom:10px;">
+        <i class="bi bi-clock-history"></i> Reservation ID: #STK-SALEM-9842
+      </span>
+      <h2 style="font-size:2rem; margin-bottom:6px;">Anandha's Order Dashboard</h2>
+      <p style="color:var(--muted); font-size:0.9rem;">
+        Your custom vehicle build is locked and undergoing precision assembly at Salem Flagship HQ.
+      </p>
+    </div>
+    <div style="text-align:right;">
+      <span style="font-size:0.8rem; color:var(--muted); display:block;">ESTIMATED HANDOVER</span>
+      <strong style="font-size:1.6rem; color:var(--primary);">OCTOBER 15, 2026</strong>
+      <span style="display:block; font-size:0.75rem; color:#10B981; margin-top:2px;"><i class="bi bi-geo-alt-fill"></i> Salem Flagship HQ, TN</span>
+    </div>
+  </div>
+
+  <!-- STEPPER TIMELINE -->
+  <div class="stepper-box">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h3><i class="bi bi-diagram-3-fill text-primary"></i> Production &amp; Delivery Progress Stepper</h3>
+      <span style="font-size:0.85rem; color:var(--primary); font-weight:700;">Status: Spec Lock Active</span>
+    </div>
+
+    <div class="stepper-steps">
+      <div class="stepper-line"></div>
+      <div class="stepper-line-active"></div>
+
+      <div class="step-node completed">
+        <div class="step-circle"><i class="bi bi-check-lg"></i></div>
+        <strong style="font-size:0.85rem;">1. Test Drive Reserved</strong>
+      </div>
+
+      <div class="step-node active">
+        <div class="step-circle">2</div>
+        <strong style="font-size:0.85rem; color:var(--accent);">2. Spec Lock (Active)</strong>
+      </div>
+
+      <div class="step-node">
+        <div class="step-circle">3</div>
+        <strong style="font-size:0.85rem; color:var(--muted);">3. Salem Factory Build</strong>
+      </div>
+
+      <div class="step-node">
+        <div class="step-circle">4</div>
+        <strong style="font-size:0.85rem; color:var(--muted);">4. Salem HQ Delivery</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER GRID -->
+  <div class="order-grid">
+    <div>
+      <div class="order-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <h4><i class="bi bi-car-front text-primary"></i> Reserved Vehicle Specification</h4>
+          <span style="font-size:1.5rem; font-weight:800; color:var(--primary);">$240,000</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center; margin-bottom:20px;">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Reserved Spectre V12" style="width:100%; border-radius:16px; border:1px solid var(--border);">
+          <div style="font-size:0.88rem; display:flex; flex-direction:column; gap:10px;">
+            <div><span style="color:var(--muted); font-size:0.75rem;">RESERVED MODEL</span><strong style="display:block;">Stackly Spectre V12 Coupe</strong></div>
+            <div><span style="color:var(--muted); font-size:0.75rem;">EXTERIOR PAINT</span><strong style="display:block;">Crimson Red Metallic</strong></div>
+            <div><span style="color:var(--muted); font-size:0.75rem;">WHEELS</span><strong style="display:block;">21" Carbon Aero Rims</strong></div>
+            <div><span style="color:var(--muted); font-size:0.75rem;">CABIN INTERIOR</span><strong style="display:block;">Salem Cognac Leather</strong></div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; border-top:1px solid var(--border); padding-top:16px;">
+          <button class="btn-glass" onclick="showToast('Spec Modification Opened', 'bi-pencil-fill')"><i class="bi bi-pencil-fill"></i> Modify Spec</button>
+          <button class="btn-primary" onclick="showToast('Loading Assembly Photos...', 'bi-camera-fill')"><i class="bi bi-camera-fill"></i> View Assembly Photos</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <!-- DIGITAL E-PASS -->
+      <div class="order-card" style="text-align:center;">
+        <h4 style="margin-bottom:16px;"><i class="bi bi-qr-code-scan text-primary"></i> Digital Showroom E-Pass</h4>
+        <div style="background:#FFF; padding:16px; border-radius:16px; display:inline-block; margin-bottom:16px;">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=STK-SALEM-9842" alt="QR Code" style="width:130px; height:130px;">
+        </div>
+        <div style="text-align:left; font-size:0.85rem; color:var(--muted); background:rgba(255,255,255,0.03); padding:14px; border-radius:14px; border:1px solid var(--border);">
+          <div><i class="bi bi-calendar-event text-primary"></i> <strong>Appointment Date:</strong> Saturday, Oct 3, 2026</div>
+          <div style="margin-top:6px;"><i class="bi bi-clock text-primary"></i> <strong>Time Slot:</strong> 10:30 AM IST</div>
+          <div style="margin-top:6px;"><i class="bi bi-geo-alt-fill text-primary"></i> <strong>Location:</strong> Salem Flagship HQ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
